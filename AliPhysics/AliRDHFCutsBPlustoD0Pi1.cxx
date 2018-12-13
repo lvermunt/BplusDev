@@ -1518,6 +1518,12 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0forD0ptbinSelected(TObject* obj, Int_t select
     return 0;
   }
 
+  //Fix if there is a mismatch (fGetCutInfo = true, and bCutArray not initialized in function argument)
+  if(fGetCutInfo && !bCutArray){
+    Bool_t bCutArray2[29]; bCutArray = bCutArray2;
+    for(int i = 0; i < 29; i++){ bCutArray[i] = false; }
+  }
+
   Int_t returnvalue = 1;
   Bool_t bPassedCut = kFALSE;
 
@@ -1827,17 +1833,43 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0forD0ptbinSelected(TObject* obj, Int_t select
     if (!bPassedCut && !fGetCutInfo) return 0;
     //---------------------------------------------------------------------
 
+    if(bCutArray){
+      for (Int_t i = 0; i < 29; ++i)
+      {
+        if (bCutArray[i] == kTRUE) {
+          returnvalue = 0;
+          break;
+        }
+      }
+    }
+    return returnvalue;
   }
 
-  for (Int_t i = 0; i < 29; ++i)
-  {
-    if (bCutArray[i] == kTRUE) {
-      returnvalue = 0;
-      break;
+  if(selectionLevel == AliRDHFCuts::kAll || selectionLevel == AliRDHFCuts::kTracks){
+
+    if(!AreDaughtersSelected(candidateD0,aod)) return 0;
+
+    AliExternalTrackParam particleTrack;
+    particleTrack.CopyFromVTrack(candidatePion);
+    Double_t d0[2], covd0[3];
+    particleTrack.PropagateToDCA(primaryVertex, bz, 100., d0, covd0);
+
+    if (TMath::Abs(d0[0]) < GetMind0D0FirstDaughter()) return 0;
+
+    AliExternalTrackParam particleTrack2;
+    particleTrack2.CopyFromVTrack(candidateKaon);
+    Double_t d02[2], covd02[3];
+    particleTrack2.PropagateToDCA(primaryVertex, bz, 100., d02, covd02);
+
+    if (TMath::Abs(d0[0]) < GetMind0D0SecondDaughter()) return 0;
+      
+    if (UseFilterBitD0FirstDaughter() == kTRUE) {
+      if (!(candidatePion->TestFilterMask(BIT(GetFilterBitD0FirstDaughter())))) return 0;
+      if (!(candidateKaon->TestFilterMask(BIT(GetFilterBitD0SecondDaughter())))) return 0;
     }
   }
 
-  return returnvalue;
+  return 1;
 }
 //--------------------------------------------------------------------------
 Int_t AliRDHFCutsBPlustoD0Pi1::IsSelected(TObject* obj, Int_t selectionLevel, AliAODEvent* aod) {
@@ -2608,348 +2640,6 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0FromBPlusSelectedMVA(Double_t ptBPlus, TObjec
     cutVariableValue = normalizedDecayTimeToBPlus;
     if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
-  }
-
-  return 1;
-}
-//----------------------------------------------------------------------------------
-Int_t AliRDHFCutsBPlustoD0Pi1::IsD0forD0ptbinSelectedMVA(TObject* obj, Int_t selectionLevel, AliAODEvent* aod, AliAODVertex *primaryVertex, Double_t bz) {
-  //
-  // Apply selection on D0 candidate (for MVA, need to be merged with function for standard analysis)
-  //
-
-  if (!fCutsRDD0forD0ptbin) {
-    cout << "Cut matrice not inizialized. Exit..." << endl;
-    return 0;
-  }
-
-  AliAODRecoDecayHF2Prong* candidateD0 = (AliAODRecoDecayHF2Prong*)obj;
-  if (!candidateD0) {
-    cout << "candidateD0 null" << endl;
-    return 0;
-  }
-
-  AliAODTrack *candidatePion = (AliAODTrack*)candidateD0->GetDaughter(0);
-  if (!candidatePion) {
-    cout << "candidatePion null 3" << endl;
-    return 0;
-  }
-
-  AliAODTrack *candidateKaon = (AliAODTrack*)candidateD0->GetDaughter(1);
-  if (!candidateKaon) {
-    cout << "candidateKaon null" << endl;
-    return 0;
-  }
-
-  AliAODVertex * vertexD0 = candidateD0->GetSecondaryVtx();
-  if (!vertexD0) {
-    cout << "vertexD0 null" << endl;
-    return 0;
-  }
-
-  if (!primaryVertex) {
-    cout << "primaryVertex null" << endl;
-    return 0;
-  }
-
-  Bool_t bPassedCut = kFALSE;
-
-  // selection on candidate
-  if (selectionLevel == AliRDHFCuts::kAll ||
-      selectionLevel == AliRDHFCuts::kCandidate) {
-
-    Int_t ptbin = PtBinD0forD0ptbin(candidateD0->Pt());
-    if (ptbin == -1) return -1;
-
-    // D0mass
-    Double_t mD0PDG = TDatabasePDG::Instance()->GetParticle(421)->Mass();
-
-    // D0 window - invariant mass
-    UInt_t prongs[2];
-    prongs[0] = 211; prongs[1] = 321;
-    Double_t invMassD0 = candidateD0->InvMass(2, prongs);
-    Double_t invMassDifference = TMath::Abs(mD0PDG - invMassD0);
-
-    UInt_t prongs2[2];
-    prongs2[1] = 211; prongs2[0] = 321;
-    Double_t invMassD02 = candidateD0->InvMass(2, prongs2);
-    Double_t invMassDifference2 = TMath::Abs(mD0PDG - invMassD02);
-
-    if (invMassDifference > invMassDifference2) invMassDifference = invMassDifference2;
-
-    Double_t pointingAngle = candidateD0->CosPointingAngle();
-    Double_t dcaMother = candidateD0->GetDCA();
-    Double_t ptMother = candidateD0->Pt();
-    Double_t momentumMother = candidateD0->P();
-    Double_t ptPion = candidatePion->Pt();
-    Double_t ptKaon = candidateKaon->Pt();
-
-    AliExternalTrackParam motherTrack;
-    motherTrack.CopyFromVTrack(candidateD0);
-    Double_t d0z0[2], covd0z0[3], d0[2];
-    motherTrack.PropagateToDCA(primaryVertex, bz, 100., d0z0, covd0z0);
-    d0[0] = d0z0[0];
-    Double_t d0Mother = TMath::Abs(d0[0]);
-    Double_t d0firstTrack = TMath::Abs(candidateD0->Getd0Prong(0));
-    Double_t d0secondTrack = TMath::Abs(candidateD0->Getd0Prong(1));
-
-    Double_t impactProduct = candidateD0->Prodd0d0();
-    Double_t impactProductXY = TMath::Abs(candidateD0->ImpParXY());
-
-    Double_t angleBetweenBothDaughters  = (candidateKaon->Px() * candidatePion->Px() + candidateKaon->Py() * candidatePion->Py() + candidateKaon->Pz() * candidatePion->Pz()) / (candidateKaon->P() * candidatePion->P());
-    Double_t angleMotherFirstDaughter = (candidateD0->Px() * candidatePion->Px() + candidateD0->Py() * candidatePion->Py() + candidateD0->Pz() * candidatePion->Pz()) / (candidateD0->P() * candidatePion->P());
-    Double_t angleMotherSecondDaughter = (candidateD0->Px() * candidateKaon->Px() + candidateD0->Py() * candidateKaon->Py() + candidateD0->Pz() * candidateKaon->Pz()) / (candidateD0->P() * candidateKaon->P());
-
-    Double_t cosThetaStar = candidateD0->CosThetaStar(0, 421, 211, 321);
-    Double_t vertexDistance = vertexD0->DistanceToVertex(primaryVertex);
-    Double_t normDecayLength = candidateD0->NormalizedDecayLength();
-    Double_t pdgMassMother = TDatabasePDG::Instance()->GetParticle(421)->Mass();
-    Double_t pseudoProperDecayLength = ((vertexD0->GetX() - primaryVertex->GetX()) * candidateD0->Px() / TMath::Abs(candidateD0->Pt())) + ((vertexD0->GetY() - primaryVertex->GetY()) * candidateD0->Py() / TMath::Abs(candidateD0->Pt()));
-    Double_t pseudoProperDecayTime = pseudoProperDecayLength * pdgMassMother / ptMother;
-    Double_t decayTime = vertexDistance / (299792458 * TMath::Sqrt(1 / ((pdgMassMother * pdgMassMother / (momentumMother * momentumMother)) + 1)));
-
-    Double_t phi = candidateD0->Phi();
-    Double_t theta = candidateD0->Theta();
-    Double_t covMatrix[21];
-    candidateD0->GetCovarianceXYZPxPyPz(covMatrix);
-
-    Double_t cp = TMath::Cos(phi);
-    Double_t sp = TMath::Sin(phi);
-    Double_t ct = TMath::Cos(theta);
-    Double_t st = TMath::Sin(theta);
-
-    Double_t errorMomentum = covMatrix[9] * cp * cp * ct * ct // GetCovPxPx
-                             + covMatrix[13] * 2.*cp * sp * ct * ct // GetCovPxPy
-                             + covMatrix[18] * 2.*cp * ct * st // GetCovPxPz
-                             + covMatrix[14] * sp * sp * ct * ct // GetCovPyPy
-                             + covMatrix[19] * 2.*sp * ct * st // GetCovPyPz
-                             + covMatrix[20] * st * st; // GetCovPzPz
-    Double_t normalizedDecayTime = candidateD0->NormalizedDecayLength() / (299792458 * TMath::Sqrt(1 / ((pdgMassMother * pdgMassMother * errorMomentum * errorMomentum / (momentumMother * momentumMother)) + 1)));
-
-    Double_t cosPointingAngleXY = candidateD0->CosPointingAngleXY();
-    Double_t distanceXYToVertex = vertexD0->DistanceXYToVertex(primaryVertex);
-    Double_t normalizedDecayLengthXY = candidateD0->NormalizedDecayLengthXY();
-    Double_t chi2Vertex = vertexD0->GetChi2perNDF();
-
-    //Topomatic
-    Double_t dd0pr1 = 0.;
-    Double_t dd0pr2 = 0.;
-    Double_t dd0max = 0.;
-    Double_t dd0min = 0.;
-    for (Int_t ipr = 0; ipr < 2; ipr++)
-    {
-      Double_t diffIP, errdiffIP;
-      candidateD0->Getd0MeasMinusExpProng(ipr, bz, diffIP, errdiffIP);
-      Double_t normdd0 = 0.;
-      if (errdiffIP > 0.) normdd0 = diffIP / errdiffIP;
-      if (ipr == 0) dd0pr1 = normdd0;
-      if (ipr == 1) dd0pr2 = normdd0;
-    }
-    if (TMath::Abs(dd0pr1) > TMath::Abs(dd0pr2)) {dd0max = dd0pr1; dd0min = dd0pr2;}
-    else {dd0max = dd0pr2; dd0min = dd0pr1;}
-
-
-    // We apply the cuts
-    Int_t nCutIndex = 0;
-    Double_t cutVariableValue = 0.0;
-
-    // "inv. mass width [GeV]" --------------------------------------------
-    nCutIndex = 0;
-    cutVariableValue = invMassDifference;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "delta mass width [GeV]" -------------------------------------------
-    // nCutIndex = 1; // not used for D0
-    // cutVariableValue = invMassDelta;
-    // if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "pointing angle [Cos(theta)]" --------------------------------------
-    nCutIndex = 2;
-    cutVariableValue = pointingAngle;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "dca [cm]" ---------------------------------------------------------
-    nCutIndex = 3;
-    cutVariableValue = dcaMother;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "Pt D0 [GeV/c]" ----------------------------------------------------
-    nCutIndex = 4;
-    cutVariableValue = ptMother;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "Pt Kaon [GeV/c]" -------------------------------------------------
-    nCutIndex = 5;
-    cutVariableValue = ptKaon;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "Pt Pion [GeV/c]" --------------------------------------------------
-    nCutIndex = 6;
-    cutVariableValue = ptPion;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "d0 D0 [cm]" -------------------------------------------------------
-    nCutIndex = 7;
-    cutVariableValue = d0Mother;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "d0 Kaon [cm]"-----------------------------------------------------
-    nCutIndex = 8;
-    cutVariableValue = d0firstTrack;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "d0 Pion [cm]" -----------------------------------------------------
-    nCutIndex = 9;
-    cutVariableValue = d0secondTrack;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "d0d0 [cm^2]" ------------------------------------------------------
-    nCutIndex = 10;
-    cutVariableValue = impactProduct;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "d0d0 XY [cm^2]" ---------------------------------------------------
-    nCutIndex = 11;
-    cutVariableValue = impactProductXY;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "angle between both daughters" -------------------------------------
-    nCutIndex = 12;
-    cutVariableValue = angleBetweenBothDaughters;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "angle mother with first daughter" ---------------------------------
-    nCutIndex = 13;
-    cutVariableValue = angleMotherFirstDaughter;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "angle mother with second daughter" --------------------------------
-    nCutIndex = 14;
-    cutVariableValue = angleMotherSecondDaughter;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "cosThetaStar" -----------------------------------------------------
-    nCutIndex = 15;
-    cutVariableValue = cosThetaStar;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "vertexDistance" ---------------------------------------------------
-    nCutIndex = 16;
-    cutVariableValue = vertexDistance;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "pseudoProperDecayTime" --------------------------------------------
-    nCutIndex = 17;
-    cutVariableValue = pseudoProperDecayTime;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "DecayTime" --------------------------------------------------------
-    nCutIndex = 18;
-    cutVariableValue = decayTime;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "normalizedDecayTime" ----------------------------------------------------
-    nCutIndex = 19;
-    cutVariableValue = normalizedDecayTime;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "normDecayLength" --------------------------------------------------
-    nCutIndex = 20;
-    cutVariableValue = normDecayLength;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "topomatic first daughter" -----------------------------------------
-    nCutIndex = 21;
-    cutVariableValue = dd0pr1;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "topomatic second daughter" ----------------------------------------
-    nCutIndex = 22;
-    cutVariableValue = dd0pr2;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "topomatic max" ----------------------------------------------------
-    nCutIndex = 23;
-    cutVariableValue = dd0max;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "topomatic min" ----------------------------------------------------
-    nCutIndex = 24;
-    cutVariableValue = dd0min;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "pointing angle XY" ----------------------------------------------------
-    nCutIndex = 25;
-    cutVariableValue = cosPointingAngleXY;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "vertex distance XY" ----------------------------------------------------
-    nCutIndex = 26;
-    cutVariableValue = distanceXYToVertex;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "normalized decay length XY" ----------------------------------------------------
-    nCutIndex = 27;
-    cutVariableValue = normalizedDecayLengthXY;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-
-    // "chi squared per NDF" ----------------------------------------------------
-    nCutIndex = 28;
-    cutVariableValue = chi2Vertex;
-    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
-    //---------------------------------------------------------------------
-  }
-    
-  if(selectionLevel == AliRDHFCuts::kAll || selectionLevel == AliRDHFCuts::kTracks){
-
-    if(!AreDaughtersSelected(candidateD0,aod)) return 0;
-
-    AliExternalTrackParam particleTrack;
-    particleTrack.CopyFromVTrack(candidatePion);
-    Double_t d0[2], covd0[3];
-    particleTrack.PropagateToDCA(primaryVertex, bz, 100., d0, covd0);
-
-    if (TMath::Abs(d0[0]) < GetMind0D0FirstDaughter()) return 0;
-
-    AliExternalTrackParam particleTrack2;
-    particleTrack2.CopyFromVTrack(candidateKaon);
-    Double_t d02[2], covd02[3];
-    particleTrack2.PropagateToDCA(primaryVertex, bz, 100., d02, covd02);
-
-    if (TMath::Abs(d0[0]) < GetMind0D0SecondDaughter()) return 0;
-      
-    if (UseFilterBitD0FirstDaughter() == kTRUE) {
-      if (!(candidatePion->TestFilterMask(BIT(GetFilterBitD0FirstDaughter())))) return 0;
-      if (!(candidateKaon->TestFilterMask(BIT(GetFilterBitD0SecondDaughter())))) return 0;
-    }
   }
 
   return 1;
