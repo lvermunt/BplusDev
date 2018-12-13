@@ -40,7 +40,6 @@ class AliRDHFCutsBPlustoD0Pi1 : public AliRDHFCuts
   using AliRDHFCuts::GetCutVarsForOpt;
   virtual void GetCutVarsForOpt(AliAODRecoDecayHF *d,Float_t *vars,Int_t nvars,Int_t *pdgdaughters);
 
-  //First two for MVA, last one for standard analysis (TBD: Merge them?)
   using AliRDHFCuts::IsSelected;
   virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel, AliAODEvent* aod){ return IsSelected(obj,selectionLevel,aod,0); }
   virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel){ return IsSelected(obj,selectionLevel,0,0); }
