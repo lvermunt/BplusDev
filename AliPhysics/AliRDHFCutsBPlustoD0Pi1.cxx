@@ -2206,7 +2206,7 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsSelected(TObject* obj, Int_t selectionLevel, Al
   return 1;
 }
 //----------------------------------------------------------------------------------
-Int_t AliRDHFCutsBPlustoD0Pi1::IsBplusPionSelectedMVA(TObject* obj,Int_t selectionLevel, AliAODEvent* aod, AliAODVertex *primaryVertex, Double_t bz) {
+Int_t AliRDHFCutsBPlustoD0Pi1::IsBplusPionSelected(TObject* obj,Int_t selectionLevel, AliAODEvent* aod) {
   //
   // Apply selection on D0 candidate.
   //
@@ -2216,6 +2216,15 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsBplusPionSelectedMVA(TObject* obj,Int_t selecti
     cout << "candidatePion null" << endl;
     return 0;
   }
+
+  AliAODVertex * primaryVertex = aod->GetPrimaryVertex();
+  if (!primaryVertex) {
+    cout << "primaryVertex null" << endl;
+    return 0;
+  }
+
+  //get the magnetic field
+  Double_t bz = (Double_t)aod->GetMagneticField();
 
   if(selectionLevel == AliRDHFCuts::kAll || selectionLevel == AliRDHFCuts::kTracks){
 
