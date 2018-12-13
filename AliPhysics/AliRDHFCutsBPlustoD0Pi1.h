@@ -42,13 +42,13 @@ class AliRDHFCutsBPlustoD0Pi1 : public AliRDHFCuts
 
   //First two for MVA, last one for standard analysis (TBD: Merge them?)
   using AliRDHFCuts::IsSelected;
-  virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel, AliAODEvent* aod);
-  virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel){ return IsSelected(obj,selectionLevel,0); }
-  virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel, AliAODEvent* aod, Bool_t* bCutArray);
+  virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel, AliAODEvent* aod){ return IsSelected(obj,selectionLevel,aod,0); }
+  virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel){ return IsSelected(obj,selectionLevel,0,0); }
+  Int_t IsSelected(TObject* obj, Int_t selectionLevel, AliAODEvent* aod, Bool_t* bCutArray = 0);
 
   Int_t IsD0FromBPlusSelected(Double_t ptBPlus, TObject* obj,Int_t selectionLevel, AliAODEvent* aod, Bool_t bCutArray[68] = 0);
   Int_t IsD0forD0ptbinSelected(TObject* obj,Int_t selectionLevel, AliAODEvent* aod, Bool_t* bCutArray = 0);
-  Int_t IsBplusPionSelected(TObject* obj,Int_t selectionLevel, AliAODEvent* aod, AliAODVertex *primaryVertex, Double_t bz);
+  Int_t IsBplusPionSelected(TObject* obj,Int_t selectionLevel, AliAODEvent* aod);
   Int_t IsD0SelectedPreRecVtx(AliAODRecoDecayHF2Prong* d, AliAODTrack* pion, AliAODVertex *primaryVertex, Double_t bz, Int_t selLevel);
 
   virtual Int_t IsSelectedPID(AliAODRecoDecayHF *rd);
