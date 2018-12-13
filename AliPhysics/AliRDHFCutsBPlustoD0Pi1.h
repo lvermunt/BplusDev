@@ -46,11 +46,10 @@ class AliRDHFCutsBPlustoD0Pi1 : public AliRDHFCuts
   virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel){ return IsSelected(obj,selectionLevel,0); }
   virtual Int_t IsSelected(TObject* obj, Int_t selectionLevel, AliAODEvent* aod, Bool_t* bCutArray);
 
-  //Last three for MVA, first two for standard analysis (TBD: Merge them?)
   Int_t IsD0FromBPlusSelected(Double_t ptBPlus, TObject* obj,Int_t selectionLevel, AliAODEvent* aod, Bool_t bCutArray[68] = 0);
   Int_t IsD0forD0ptbinSelected(TObject* obj,Int_t selectionLevel, AliAODEvent* aod, Bool_t* bCutArray = 0);
   Int_t IsBplusPionSelected(TObject* obj,Int_t selectionLevel, AliAODEvent* aod, AliAODVertex *primaryVertex, Double_t bz);
-  Int_t IsD0SelectedPreRecVtxMVA(AliAODRecoDecayHF2Prong* d, AliAODTrack* pion, AliAODVertex *primaryVertex, Double_t bz, Int_t selLevel);
+  Int_t IsD0SelectedPreRecVtx(AliAODRecoDecayHF2Prong* d, AliAODTrack* pion, AliAODVertex *primaryVertex, Double_t bz, Int_t selLevel);
 
   virtual Int_t IsSelectedPID(AliAODRecoDecayHF *rd);
   virtual Int_t SelectPID(AliAODTrack *track, Int_t type);
@@ -99,7 +98,6 @@ class AliRDHFCutsBPlustoD0Pi1 : public AliRDHFCuts
   Bool_t GetIsCutUsed(Int_t nCutIndex, Int_t ptbin) const {return fIsCutUsed[GetGlobalIndex(nCutIndex,ptbin)];}
   Bool_t GetIsCutUsedD0forD0ptbin(Int_t nCutIndex, Int_t ptbin) const {return fIsCutUsedD0forD0ptbin[GetGlobalIndexD0forD0ptbin(nCutIndex,ptbin)];}
 
-  //Last two for MVA, first two for standard analysis (TBD: Merge them?)
   Int_t ApplyCutOnVariable(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue, Bool_t bCutArray[68] = 0);
   Int_t ApplyCutOnVariableD0forD0ptbin(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue, Bool_t bCutArray[29] = 0);
 

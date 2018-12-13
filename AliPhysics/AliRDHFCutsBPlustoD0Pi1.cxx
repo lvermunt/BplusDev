@@ -2266,7 +2266,7 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsBplusPionSelected(TObject* obj,Int_t selectionL
 
 }
 //---------------------------------------------------------------------------
-Int_t AliRDHFCutsBPlustoD0Pi1::IsD0SelectedPreRecVtxMVA(AliAODRecoDecayHF2Prong* d, AliAODTrack* pion, AliAODVertex *primaryVertex, Double_t bz, Int_t selLevel = 0)
+Int_t AliRDHFCutsBPlustoD0Pi1::IsD0SelectedPreRecVtx(AliAODRecoDecayHF2Prong* d, AliAODTrack* pion, AliAODVertex *primaryVertex, Double_t bz, Int_t selLevel = 0)
 {
   //
   // Preselection before reconstruction Bplus vertex to save time.
