@@ -1987,175 +1987,175 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsSelected(TObject* obj, Int_t selectionLevel, Al
     // "inv. mass width [GeV]" --------------------------------------------
     nCutIndex = 39;
     cutVariableValue = invMassDifference;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "delta mass width [GeV]" -------------------------------------------
     nCutIndex = 40;
     cutVariableValue = invMassDelta;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pointing angle [Cos(theta)]" --------------------------------------
     nCutIndex = 41;
     cutVariableValue = pointingAngle;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "dca [cm]" ---------------------------------------------------------
     nCutIndex = 42;
     cutVariableValue = dcaMother;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt BPlus [GeV/c]" ----------------------------------------------------
     nCutIndex = 43;
     cutVariableValue = ptMother;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt D0 [GeV/c]" -------------------------------------------------
     nCutIndex = 44;
     cutVariableValue = ptD0;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt Pion [GeV/c]" --------------------------------------------------
     nCutIndex = 45;
     cutVariableValue = ptPion;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 BPlus [cm]" -------------------------------------------------------
     nCutIndex = 46;
     cutVariableValue = d0Mother;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 D0 [cm]"-----------------------------------------------------
     nCutIndex = 47;
     cutVariableValue = d0firstTrack;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 Pion [cm]" -----------------------------------------------------
     nCutIndex = 48;
     cutVariableValue = d0secondTrack;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0d0 [cm^2]" ------------------------------------------------------
     nCutIndex = 49;
     cutVariableValue = impactProduct;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0d0 XY [cm^2]" ---------------------------------------------------
     nCutIndex = 50;
     cutVariableValue = impactProductXY;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle between both daughters" -------------------------------------
     nCutIndex = 51;
     cutVariableValue = angleBetweenBothDaughters;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle mother with first daughter" ---------------------------------
     nCutIndex = 52;
     cutVariableValue = angleMotherFirstDaughter;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle mother with second daughter" --------------------------------
     nCutIndex = 53;
     cutVariableValue = angleMotherSecondDaughter;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "cosThetaStar" -----------------------------------------------------
     nCutIndex = 54;
     cutVariableValue = cosThetaStar;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "vertexDistance" ---------------------------------------------------
     nCutIndex = 55;
     cutVariableValue = vertexDistance;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pseudoProperDecayTime" --------------------------------------------
     nCutIndex = 56;
     cutVariableValue = pseudoProperDecayTime;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "DecayTime" --------------------------------------------------------
     nCutIndex = 57;
     cutVariableValue = decayTime;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normalizedDecayTime" ----------------------------------------------------
     nCutIndex = 58;
     cutVariableValue = normalizedDecayTime;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normDecayLength" --------------------------------------------------
     nCutIndex = 59;
     cutVariableValue = normDecayLength;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic first daughter" -----------------------------------------
     nCutIndex = 60;
     cutVariableValue = dd0pr1;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic second daughter" ----------------------------------------
     nCutIndex = 61;
     cutVariableValue = dd0pr2;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic max" ----------------------------------------------------
     nCutIndex = 62;
     cutVariableValue = dd0max;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic min" ----------------------------------------------------
     nCutIndex = 63;
     cutVariableValue = dd0min;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pointing angle XY" ----------------------------------------------------
     nCutIndex = 64;
     cutVariableValue = cosPointingAngleXY;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "vertex distance XY" ----------------------------------------------------
     nCutIndex = 65;
     cutVariableValue = distanceXYToVertex;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normalized decay length XY" ----------------------------------------------------
     nCutIndex = 66;
     cutVariableValue = normalizedDecayLengthXY;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "chi squared per NDF" ----------------------------------------------------
     nCutIndex = 67;
     cutVariableValue = chi2Vertex;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // select D0
@@ -2326,175 +2326,175 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0FromBPlusSelectedMVA(Double_t ptBPlus, TObjec
     // "inv. mass width [GeV]" --------------------------------------------
     nCutIndex = 0;
     cutVariableValue = invMassDifference;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "delta mass width [GeV]" -------------------------------------------
     // nCutIndex = 1; // not used for D0
     // cutVariableValue = invMassDelta;
-    // if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    // if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pointing angle [Cos(theta)]" --------------------------------------
     nCutIndex = 2;
     cutVariableValue = pointingAngle;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "dca [cm]" ---------------------------------------------------------
     nCutIndex = 3;
     cutVariableValue = dcaMother;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt D0 [GeV/c]" ----------------------------------------------------
     nCutIndex = 4;
     cutVariableValue = ptMother;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt Kaon [GeV/c]" -------------------------------------------------
     nCutIndex = 5;
     cutVariableValue = ptKaon;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt Pion [GeV/c]" --------------------------------------------------
     nCutIndex = 6;
     cutVariableValue = ptPion;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 D0 [cm]" -------------------------------------------------------
     nCutIndex = 7;
     cutVariableValue = d0Mother;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 Kaon [cm]"-----------------------------------------------------
     nCutIndex = 8;
     cutVariableValue = d0firstTrack;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 Pion [cm]" -----------------------------------------------------
     nCutIndex = 9;
     cutVariableValue = d0secondTrack;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0d0 [cm^2]" ------------------------------------------------------
     nCutIndex = 10;
     cutVariableValue = impactProduct;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0d0 XY [cm^2]" ---------------------------------------------------
     nCutIndex = 11;
     cutVariableValue = impactProductXY;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle between both daughters" -------------------------------------
     nCutIndex = 12;
     cutVariableValue = angleBetweenBothDaughters;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle mother with first daughter" ---------------------------------
     nCutIndex = 13;
     cutVariableValue = angleMotherFirstDaughter;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle mother with second daughter" --------------------------------
     nCutIndex = 14;
     cutVariableValue = angleMotherSecondDaughter;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "cosThetaStar" -----------------------------------------------------
     nCutIndex = 15;
     cutVariableValue = cosThetaStar;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "vertexDistance" ---------------------------------------------------
     nCutIndex = 16;
     cutVariableValue = vertexDistance;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pseudoProperDecayTime" --------------------------------------------
     nCutIndex = 17;
     cutVariableValue = pseudoProperDecayTime;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "DecayTime" --------------------------------------------------------
     nCutIndex = 18;
     cutVariableValue = decayTime;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normalizedDecayTime" ----------------------------------------------------
     nCutIndex = 19;
     cutVariableValue = normalizedDecayTime;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normDecayLength" --------------------------------------------------
     nCutIndex = 20;
     cutVariableValue = normDecayLength;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic first daughter" -----------------------------------------
     nCutIndex = 21;
     cutVariableValue = dd0pr1;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic second daughter" ----------------------------------------
     nCutIndex = 22;
     cutVariableValue = dd0pr2;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic max" ----------------------------------------------------
     nCutIndex = 23;
     cutVariableValue = dd0max;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic min" ----------------------------------------------------
     nCutIndex = 24;
     cutVariableValue = dd0min;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pointing angle XY" ----------------------------------------------------
     nCutIndex = 25;
     cutVariableValue = cosPointingAngleXY;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "vertex distance XY" ----------------------------------------------------
     nCutIndex = 26;
     cutVariableValue = distanceXYToVertex;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normalized decay length XY" ----------------------------------------------------
     nCutIndex = 27;
     cutVariableValue = normalizedDecayLengthXY;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "chi squared per NDF" ----------------------------------------------------
     nCutIndex = 28;
     cutVariableValue = chi2Vertex;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
 
@@ -2552,61 +2552,61 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0FromBPlusSelectedMVA(Double_t ptBPlus, TObjec
     // "pointingAngleToBPlus" ---------------------------------------------
     nCutIndex = 29;
     cutVariableValue = pointingAngleToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0MotherToBPlus" --------------------------------------------------
     nCutIndex = 30;
     cutVariableValue = d0D0DSVert;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0FirstDaughterToBPlus" -------------------------------------------
     nCutIndex = 31;
     cutVariableValue = d0FirstDaughterToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0SecondDaughterToBPlus" ------------------------------------------
     nCutIndex = 32;
     cutVariableValue = d0SecondDaughterToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "impactProductToBPlus" ---------------------------------------------
     nCutIndex = 33;
     cutVariableValue = impactProductToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "impactProductXYToBPlus" -------------------------------------------
     nCutIndex = 34;
     cutVariableValue = impactProductXYToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normDecayLengthToBPlus" -------------------------------------------
     nCutIndex = 35;
     cutVariableValue = normDecayLengthToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pseudoProperDecayTimeToBPlus" -------------------------------------
     nCutIndex = 36;
     cutVariableValue = pseudoProperDecayTimeToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "DecayTimeToBPlus" -------------------------------------------------
     nCutIndex = 37;
     cutVariableValue = DecayTimeToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normalizedDecayTimeToBPlus" ---------------------------------------------
     nCutIndex = 38;
     cutVariableValue = normalizedDecayTimeToBPlus;
-    if(!ApplyCutOnVariableMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariable(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
   }
 
@@ -2756,175 +2756,175 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0forD0ptbinSelectedMVA(TObject* obj, Int_t sel
     // "inv. mass width [GeV]" --------------------------------------------
     nCutIndex = 0;
     cutVariableValue = invMassDifference;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "delta mass width [GeV]" -------------------------------------------
     // nCutIndex = 1; // not used for D0
     // cutVariableValue = invMassDelta;
-    // if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    // if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pointing angle [Cos(theta)]" --------------------------------------
     nCutIndex = 2;
     cutVariableValue = pointingAngle;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "dca [cm]" ---------------------------------------------------------
     nCutIndex = 3;
     cutVariableValue = dcaMother;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt D0 [GeV/c]" ----------------------------------------------------
     nCutIndex = 4;
     cutVariableValue = ptMother;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt Kaon [GeV/c]" -------------------------------------------------
     nCutIndex = 5;
     cutVariableValue = ptKaon;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "Pt Pion [GeV/c]" --------------------------------------------------
     nCutIndex = 6;
     cutVariableValue = ptPion;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 D0 [cm]" -------------------------------------------------------
     nCutIndex = 7;
     cutVariableValue = d0Mother;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 Kaon [cm]"-----------------------------------------------------
     nCutIndex = 8;
     cutVariableValue = d0firstTrack;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0 Pion [cm]" -----------------------------------------------------
     nCutIndex = 9;
     cutVariableValue = d0secondTrack;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0d0 [cm^2]" ------------------------------------------------------
     nCutIndex = 10;
     cutVariableValue = impactProduct;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "d0d0 XY [cm^2]" ---------------------------------------------------
     nCutIndex = 11;
     cutVariableValue = impactProductXY;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle between both daughters" -------------------------------------
     nCutIndex = 12;
     cutVariableValue = angleBetweenBothDaughters;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle mother with first daughter" ---------------------------------
     nCutIndex = 13;
     cutVariableValue = angleMotherFirstDaughter;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "angle mother with second daughter" --------------------------------
     nCutIndex = 14;
     cutVariableValue = angleMotherSecondDaughter;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "cosThetaStar" -----------------------------------------------------
     nCutIndex = 15;
     cutVariableValue = cosThetaStar;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "vertexDistance" ---------------------------------------------------
     nCutIndex = 16;
     cutVariableValue = vertexDistance;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pseudoProperDecayTime" --------------------------------------------
     nCutIndex = 17;
     cutVariableValue = pseudoProperDecayTime;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "DecayTime" --------------------------------------------------------
     nCutIndex = 18;
     cutVariableValue = decayTime;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normalizedDecayTime" ----------------------------------------------------
     nCutIndex = 19;
     cutVariableValue = normalizedDecayTime;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normDecayLength" --------------------------------------------------
     nCutIndex = 20;
     cutVariableValue = normDecayLength;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic first daughter" -----------------------------------------
     nCutIndex = 21;
     cutVariableValue = dd0pr1;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic second daughter" ----------------------------------------
     nCutIndex = 22;
     cutVariableValue = dd0pr2;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic max" ----------------------------------------------------
     nCutIndex = 23;
     cutVariableValue = dd0max;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "topomatic min" ----------------------------------------------------
     nCutIndex = 24;
     cutVariableValue = dd0min;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "pointing angle XY" ----------------------------------------------------
     nCutIndex = 25;
     cutVariableValue = cosPointingAngleXY;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "vertex distance XY" ----------------------------------------------------
     nCutIndex = 26;
     cutVariableValue = distanceXYToVertex;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "normalized decay length XY" ----------------------------------------------------
     nCutIndex = 27;
     cutVariableValue = normalizedDecayLengthXY;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
 
     // "chi squared per NDF" ----------------------------------------------------
     nCutIndex = 28;
     cutVariableValue = chi2Vertex;
-    if(!ApplyCutOnVariableD0forD0ptbinMVA(nCutIndex, ptbin, cutVariableValue)) return 0;
+    if(!ApplyCutOnVariableD0forD0ptbin(nCutIndex, ptbin, cutVariableValue)) return 0;
     //---------------------------------------------------------------------
   }
     
@@ -3078,10 +3078,10 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0SelectedPreRecVtxMVA(AliAODRecoDecayHF2Prong*
 
     if (pion->Charge() == -1) {
       Double_t invMassDifference = TMath::Abs(d->InvMassD0() - pdgMassD0);
-      if(!ApplyCutOnVariableD0forD0ptbinMVA(0, ptbin, invMassDifference)) returnvalueD0 = -1;
+      if(!ApplyCutOnVariableD0forD0ptbin(0, ptbin, invMassDifference)) returnvalueD0 = -1;
     } else if (pion->Charge() == 1) {
       Double_t invMassDifference = TMath::Abs(d->InvMassD0bar() - pdgMassD0);
-      if(!ApplyCutOnVariableD0forD0ptbinMVA(0, ptbin, invMassDifference)) returnvalueD0 = -1;
+      if(!ApplyCutOnVariableD0forD0ptbin(0, ptbin, invMassDifference)) returnvalueD0 = -1;
     } else {
       returnvalueD0 = -1;
     }
@@ -3119,7 +3119,7 @@ Int_t AliRDHFCutsBPlustoD0Pi1::IsD0SelectedPreRecVtxMVA(AliAODRecoDecayHF2Prong*
     Int_t ptbin = PtBin(trackBPlus.Pt());
     if (ptbin == -1) returnvalueBplus = -1;
     else{
-      if(!ApplyCutOnVariableMVA(39, ptbin, invMassDifference)) returnvalueBplus = -1;
+      if(!ApplyCutOnVariable(39, ptbin, invMassDifference)) returnvalueBplus = -1;
     }
   }
 
@@ -3401,7 +3401,6 @@ void AliRDHFCutsBPlustoD0Pi1::SetPtBinsD0forD0ptbin(Int_t nPtBinLimits, Float_t 
   //cout<<"Changing also Global Index -> "<<fGlobalIndex<<endl;
   fPtBinLimitsD0forD0ptbin = new Float_t[fnPtBinLimitsD0forD0ptbin];
   for (Int_t ib = 0; ib < nPtBinLimits; ib++) fPtBinLimitsD0forD0ptbin[ib] = ptBinLimits[ib];
-  for (Int_t ib = 0; ib < nPtBinLimits; ib++) std::cout << "limit " << ib << " = " << fPtBinLimitsD0forD0ptbin[ib] << std::endl;
 
   return;
 }
@@ -3418,14 +3417,16 @@ Int_t AliRDHFCutsBPlustoD0Pi1::ApplyCutOnVariable(Int_t nCutIndex, Int_t ptbin, 
     {
       if (cutVariableValue < fCutsRD[GetGlobalIndex(nCutIndex, ptbin)]) bCut = kTRUE;
     }
-    if (bCut == kTRUE) {bCutArray[nCutIndex] = 1; return 0;}
+    if (bCut == kTRUE) {
+      if(bCutArray) bCutArray[nCutIndex] = 1;
+      return 0;
+    }
   }
   return 1;
 }
 //---------------------------------------------------------------------------
 Int_t AliRDHFCutsBPlustoD0Pi1::ApplyCutOnVariableD0forD0ptbin(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue, Bool_t bCutArray[29]) {
-
-  // std::cout << "index: " << nCutIndex << ", ptbin: " << ptbin << ", used: " << GetIsCutUsedD0forD0ptbin(nCutIndex,ptbin) << ", upper: " << GetIsUpperCutD0forD0ptbin(nCutIndex) << ", value: " << cutVariableValue << ", cutvalue: " << fCutsRDD0forD0ptbin[GetGlobalIndexD0forD0ptbin(nCutIndex,ptbin)] << std::endl;
+    
   if (GetIsCutUsedD0forD0ptbin(nCutIndex, ptbin) == kTRUE)
   {
     Bool_t bCut = kFALSE;
@@ -3436,36 +3437,9 @@ Int_t AliRDHFCutsBPlustoD0Pi1::ApplyCutOnVariableD0forD0ptbin(Int_t nCutIndex, I
     {
       if (cutVariableValue < fCutsRDD0forD0ptbin[GetGlobalIndexD0forD0ptbin(nCutIndex, ptbin)]) bCut = kTRUE;
     }
-    if (bCut == kTRUE) {bCutArray[nCutIndex] = 1; return 0;}
-  }
-  return 1;
-}
-//---------------------------------------------------------------------------
-Int_t AliRDHFCutsBPlustoD0Pi1::ApplyCutOnVariableMVA(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue) {
-
-  if (GetIsCutUsed(nCutIndex, ptbin) == kTRUE)
-  {
-    if (GetIsUpperCut(nCutIndex) == kTRUE)
-    {
-      if (cutVariableValue > fCutsRD[GetGlobalIndex(nCutIndex, ptbin)]) return 0;
-    } else
-    {
-      if (cutVariableValue < fCutsRD[GetGlobalIndex(nCutIndex, ptbin)]) return 0;
-    }
-  }
-  return 1;
-}
-//---------------------------------------------------------------------------
-Int_t AliRDHFCutsBPlustoD0Pi1::ApplyCutOnVariableD0forD0ptbinMVA(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue) {
-
-  if (GetIsCutUsedD0forD0ptbin(nCutIndex, ptbin) == kTRUE)
-  {
-    if (GetIsUpperCutD0forD0ptbin(nCutIndex) == kTRUE)
-    {
-      if (cutVariableValue > fCutsRDD0forD0ptbin[GetGlobalIndexD0forD0ptbin(nCutIndex, ptbin)]) return 0;
-    } else
-    {
-      if (cutVariableValue < fCutsRDD0forD0ptbin[GetGlobalIndexD0forD0ptbin(nCutIndex, ptbin)]) return 0;
+    if (bCut == kTRUE) {
+      if(bCutArray) bCutArray[nCutIndex] = 1;
+      return 0;
     }
   }
   return 1;

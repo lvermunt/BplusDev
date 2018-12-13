@@ -102,10 +102,8 @@ class AliRDHFCutsBPlustoD0Pi1 : public AliRDHFCuts
   Bool_t GetIsCutUsedD0forD0ptbin(Int_t nCutIndex, Int_t ptbin) const {return fIsCutUsedD0forD0ptbin[GetGlobalIndexD0forD0ptbin(nCutIndex,ptbin)];}
 
   //Last two for MVA, first two for standard analysis (TBD: Merge them?)
-  Int_t ApplyCutOnVariable(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue, Bool_t bCutArray[68]);
-  Int_t ApplyCutOnVariableD0forD0ptbin(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue, Bool_t bCutArray[29]);
-  Int_t ApplyCutOnVariableMVA(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue);
-  Int_t ApplyCutOnVariableD0forD0ptbinMVA(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue);
+  Int_t ApplyCutOnVariable(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue, Bool_t bCutArray[68] = 0);
+  Int_t ApplyCutOnVariableD0forD0ptbin(Int_t nCutIndex, Int_t ptbin, Float_t cutVariableValue, Bool_t bCutArray[29] = 0);
 
   void SetVarNamesD0forD0ptbin(Int_t nVars,TString *varNames,Bool_t *isUpperCut);
 
